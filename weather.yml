@@ -11,13 +11,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
 
 matches:
-  - regex: "(?P<city>[^_]+)_wttr"
+  - regex: '\b(?P<city>[^_\s]+)_wttr$'
     replace: "{{weather}}"
     vars:
       - name: weather
         type: shell
         params:
-          cmd: "curl.exe -s \"https://wttr.in/{{city}}?format=4\""
-
+          cmd: 'curl.exe -s "https://wttr.in/{{city}}?format=4"'
 
 
