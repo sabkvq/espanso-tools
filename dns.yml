@@ -1,0 +1,9 @@
+matches:
+  - regex: '(?P<ip>\d+\.\d+\.\d+\.\d+)_fqdn'
+    replace: "{{fqdn}}"
+    vars:
+      - name: fqdn
+        type: shell
+        params:
+          cmd: "(Resolve-DnsName -Type PTR {{ip}} -Server 10.0.0.1 -ErrorAction SilentlyContinue).NameHost"
+          shell: powershell
